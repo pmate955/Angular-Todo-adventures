@@ -5,18 +5,12 @@ import { AppComponent } from './app.component';
 import { TodoCreateComponent } from './todos/todo-create/todo-create.component';
 import { TodoListComponent } from './todos/todo-list/todo-list.component';
 import { TodoEditComponent } from './todos/todo-edit/todo-edit.component';
-import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { TodoApiService } from './todos/todo-api.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TodoItemComponent } from './todos/todo-list/todo-item/todo-item.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
 
-const routes:Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'todos'},
-  { path: 'todos', component: TodoListComponent},
-  { path: 'todos/edit/:id', component: TodoEditComponent },
-  { path: 'todos/add', component: TodoCreateComponent }
-]
 
 @NgModule({ 
   declarations: [
@@ -24,13 +18,13 @@ const routes:Routes = [
     TodoCreateComponent,
     TodoListComponent,
     TodoEditComponent,
-    TodoItemComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [TodoApiService],
   bootstrap: [AppComponent]
